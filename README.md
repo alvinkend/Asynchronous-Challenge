@@ -128,3 +128,67 @@ console.log(result);
 // expected output: Array ["exuberant", "destruction", "present"]
 ```
 
+### array.forEach(), .reduce(), .map()
+
+Operasi untuk me-return value
+
+```
+forEach()
+fruits.forEach(function (item, index, array) {
+  console.log(item, index);
+});
+// Apple 0
+// Banana 1
+
+reduce()
+const array1 = [1, 2, 3, 4];
+const reducer = (accumulator, currentValue) => accumulator + currentValue;
+
+// 1 + 2 + 3 + 4
+console.log(array1.reduce(reducer));
+// expected output: 10
+
+map()
+const array1 = [1, 4, 9, 16];
+
+// pass a function to map
+const map1 = array1.map(x => x * 2);
+
+console.log(map1);
+// expected output: Array [2, 8, 18, 32]
+```
+
+# Object
+
+Objek sebenarnya adalah sebuah variabel yang menyimpan nilai (properti) dan fungsi (method).
+
+### Membuat Object
+
+```
+var car = {
+    // properti
+    type: "Fiat", 
+    model: "500", 
+    color: "white",
+ ```
+ 
+ ## Object operation
+ 
+ operasi pada object
+ 
+ ### Object.assign
+ 
+ Menyalin semua properti object ke dalam object target, jika ada key yang sama maka akan mengubah value dari key tersebut.
+
+```
+const target = { a: 1, b: 2 };
+const source = { b: 4, c: 5 };
+
+const returnedTarget = Object.assign(target, source);
+
+console.log(target);
+// expected output: Object { a: 1, b: 4, c: 5 }
+
+console.log(returnedTarget);
+// expected output: Object { a: 1, b: 4, c: 5 }
+ ```
