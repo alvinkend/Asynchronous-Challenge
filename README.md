@@ -290,7 +290,7 @@ console.log(obj);
 // expected output: Object { foo: "bar", baz: 42 }
  ```
  
-## Object.keys() and Object.values()
+### Object.keys() and Object.values()
  
 Mengembalikan sebuah array yang beranggotakan key/value dari sebuah object
  
@@ -316,7 +316,7 @@ console.log(Object.values(object1));
 // expected output: Array ["somestring", 42, false]
  ```
  
-## Object.freeze()
+### Object.freeze()
  
 Membekukan nilai pada object, supaya tidak dapat diubah
  
@@ -391,7 +391,7 @@ new Promises((resolve, reject)=> {
 .catch(error => console.log(error))
 ```
 
-##### Async/await
+### Async/await
 
 Async/await adalah fitur yang hadir sejak ES2017. Fitur ini mempermudah kita dalam menangani proses asynchronous. 
 
