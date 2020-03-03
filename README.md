@@ -366,19 +366,6 @@ Output :
 
 Promise umumnya digunakan sebagai alternative callback. Salah satu tantangan di callback adalah callback hell. Disebut neraka ketika ada callback didalam callback didalam callback lagi dan di dalam callback lagi. Problemnya adalah kode sulit dibaca dan penanganan error nya juga menjadi sulit.
 
-##### Promises method
-1. Beberapa static method yang bisa dipakai didalam Promise.
-2. Promise.all([promise1, promise2])
-3. Promise.race([promise1, promise2])
-4. Promise.resolve(value)
-5. Promise.reject(value)
-
-##### Promises method
-1. then()
-2. catch()
-3. finally()
-
-
 ```
 new Promises((resolve, reject)=> {
   const number = Math.floor((Math.random() * 10 ) + 1)
@@ -390,6 +377,19 @@ new Promises((resolve, reject)=> {
 .then(x => console.log(x))
 .catch(error => console.log(error))
 ```
+
+##### Promises method
+Beberapa static method yang bisa dipakai didalam Promise.
+1. Promise.all([promise1, promise2])
+2. Promise.race([promise1, promise2])
+3. Promise.resolve(value)
+4. Promise.reject(value)
+
+##### Promises method
+1. then()
+2. catch()
+3. finally()
+
 
 ### Async/await
 
