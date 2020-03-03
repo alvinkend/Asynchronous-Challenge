@@ -1,5 +1,66 @@
 # Ringkasan Materi
 
+# ECMASCRIPT6
+
+Sebuah standarisasi scripting language (Javascript) yang dibuat oleh European Computer Manufacturers Association (ECMA), ES6 adalah sebuah singkatan dari ECMAScript versi 6. 
+ES6 diluncurkan pada tahun 2015, jadi ES6 sama dengan ES 2015. Pada ES6 ini terdapat banyak perubahan pada JavaScript yang semakin memudahkan programmer JavaScript.
+
+### variabel
+
+Constant pada JavaScript bisa dipakai sejak ES6 dengan menggunakan `const` dan untuk mutable variabel bisa menggunakan `let` let dan var : fungsi dari let dan var sebenarnya sama untuk mendeklarasikan variabel yang nilainya dapat diubah. Namun perbedaanya adalah var mempunyai cakupan dalam sebuah fungsi (function scope) dan let mempunyai cakupan dalam sebuah block (block scope). 
+
+```
+const a = 10
+a = 11 		//Tidak bisa diassign
+let b = 10
+b = 11		 //Value b berubah
+```
+
+### Arrow Function
+
+Penyederhanaan penulisan sebuah function pada JavaScript dengan menggunakan panah `=>`.
+```
+const a = () => console.log(“a”)
+const b = (x, y) => x + y
+const c = (x, y, z) => {
+	return x + y * z
+```
+
+### For Loop
+
+Perulangan pada array di JavaScript dipermudah dengan menggunakan For of.
+```
+const array = ['a', 'b', 'c'];
+for (const element of array) {
+console.log(element);
+}
+```
+
+### Array.fill()
+
+Pengisian value pada elemen JavaScript dipermudah dengan menggunakan property fill().
+
+```
+const array1 = [1, 2, 3, 4]
+console.log(array1.fill(0, 2, 4)) 	 // expected output: [1, 2, 0, 0]
+console.log(array1.fill(5, 1)) 		// expected output: [1, 5, 5, 5]
+console.log(array1.fill(6))		// expected output: [6, 6, 6, 6]
+```
+
+### Array.find() and Array.findIndex()
+
+Mencari elemen pertama (Array.find()) atau index pertama (Array.findIndex())  yang memenuhi kriteria yang diharapkan pada Array JavaScript.
+
+```
+const array = [5, 12, 8, 130, 44]
+const found = array.find(it => it > 10) 			//`Elemen 12`
+const find = array.findIndex(it => it > 10) 			//`Index ke 1
+```
+
+### Untuk lebih lengkapnya kunjungi fitur yang ada di ES6 pada link: http://es6-features.org/
+
+
+
 # Function
 
 Function merupakan sebuah code block yang digunakan untuk melakukan tugas tertentu, pada JavaScript mendeklarasikan function bisa dengan menggunakan keyword ‘function’, parentheses ‘( )’ dan curly bracket ‘{ do magic here }’.
@@ -172,11 +233,11 @@ var car = {
     color: "white",
  ```
  
- ## Object operation
+## Object operation
  
- operasi pada object
+operasi pada object
  
- ### Object.assign
+### Object.assign
  
  Menyalin semua properti object ke dalam object target, jika ada key yang sama maka akan mengubah value dari key tersebut.
 
@@ -192,3 +253,177 @@ console.log(target);
 console.log(returnedTarget);
 // expected output: Object { a: 1, b: 4, c: 5 }
  ```
+ 
+### Object.entries
+ 
+Mengembalikkan sebuah array yang setiap element berupa array dengan ukuran 2, dimana index pertama sebagai array dan index kedua berupa value
+
+```
+const object1 = {
+  a: 'somestring',
+  b: 42
+};
+
+for (let [key, value] of Object.entries(object1)) {
+  console.log(`${key}: ${value}`);
+}
+
+// expected output:
+// "a: somestring"
+// "b: 42"
+// order is not guaranteed
+ ```
+
+### Object.from.entries
+ 
+Mengembalikkan sebuah object dari Array, dimana setiap element hanya mempunyai dua ukuran, index pertama sebagai key dan index kedua sebagai value.
+
+```
+const entries = new Map([
+  ['foo', 'bar'],
+  ['baz', 42]
+]);
+
+const obj = Object.fromEntries(entries);
+
+console.log(obj);
+// expected output: Object { foo: "bar", baz: 42 }
+ ```
+ 
+## Object.keys() and Object.values()
+ 
+Mengembalikan sebuah array yang beranggotakan key/value dari sebuah object
+ 
+```
+Object.keys()
+const object1 = {
+  a: 'somestring',
+  b: 42,
+  c: false
+};
+
+console.log(Object.keys(object1));
+// expected output: Array ["a", "b", "c"]
+
+Object.values()
+const object1 = {
+  a: 'somestring',
+  b: 42,
+  c: false
+};
+
+console.log(Object.values(object1));
+// expected output: Array ["somestring", 42, false]
+ ```
+ 
+## Object.freeze()
+ 
+Membekukan nilai pada object, supaya tidak dapat diubah
+ 
+```
+const obj = {
+  prop: 42
+};
+
+Object.freeze(obj);
+
+obj.prop = 33;
+// Throws an error in strict mode
+
+console.log(obj.prop);
+// expected output: 42
+ ```
+ 
+# Asynchronous
+
+Asynchronous hasil eksekusi atau output tidak selalu berdasarkan urutan kode, tetapi berdasarkan waktu proses. Eksekusi dengan asynchronous tidak akan membloking atau menunggu suatu perintah sampai selesai. Daripada menunggu, asynchronous akan mengeksekusi perintah selanjutnya.
+
+
+### callback
+
+Callback sebenarnya adalah function bedanya dengan function pada umumnya adalah di cara eksekusinya. Jika function pada umumnya di eksekusi berurutan dari atas ke bawah maka callback di eksekusi pada point tertentu, itu sebabnya di sebut callback.
+
+```
+function main(param1,param2,callBack){ 
+  console.log(param1, param2) 
+  callBack()  
+}
+
+function myCallback(){ 
+  console.log ('hello callback')
+}
+
+main(1,2,myCallback)
+
+/* ===================
+Output :
+ 1 2
+ hello callback
+ */
+```
+
+### Promises
+
+Promise umumnya digunakan sebagai alternative callback. Salah satu tantangan di callback adalah callback hell. Disebut neraka ketika ada callback didalam callback didalam callback lagi dan di dalam callback lagi. Problemnya adalah kode sulit dibaca dan penanganan error nya juga menjadi sulit.
+
+##### Promises method
+1. Beberapa static method yang bisa dipakai didalam Promise.
+2. Promise.all([promise1, promise2])
+3. Promise.race([promise1, promise2])
+4. Promise.resolve(value)
+5. Promise.reject(value)
+
+##### Promises method
+1. then()
+2. catch()
+3. finally()
+
+
+```
+new Promises((resolve, reject)=> {
+  const number = Math.floor((Math.random() * 10 ) + 1)
+  setTimeout(() => {
+      resolve(number)
+  }, 1000)
+})
+.then(x => % 2 === 0? "Genap" : "Ganjil")
+.then(x => console.log(x))
+.catch(error => console.log(error))
+```
+
+##### Async/await
+
+Async/await adalah fitur yang hadir sejak ES2017. Fitur ini mempermudah kita dalam menangani proses asynchronous. 
+
+Keterangan :
+async → mengubah function menjadi asynchronous
+await → menunda eksekusi hingga proses asynchronous selesai, dari kode di atas berarti console.log(result) tidak akan di eksekusi sebelum prose doAsync( ) selesai. await juga bisa digunakan berkali-kali di dalam function
+
+
+```
+async function showAvatar() {
+
+  // read our JSON
+  let response = await fetch('/article/promise-chaining/user.json');
+  let user = await response.json();
+
+  // read github user
+  let githubResponse = await fetch(`https://api.github.com/users/${user.name}`);
+  let githubUser = await githubResponse.json();
+
+  // show the avatar
+  let img = document.createElement('img');
+  img.src = githubUser.avatar_url;
+  img.className = "promise-avatar-example";
+  document.body.append(img);
+
+  // wait 3 seconds
+  await new Promise((resolve, reject) => setTimeout(resolve, 3000));
+
+  img.remove();
+
+  return githubUser;
+}
+
+showAvatar();
+```
